@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  main-nuxt-web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: portfolio-nuxt
+    ports:
+      - "3000:3000"
+    environment:
+      - NUXT_BREVO_API_KEY=${NUXT_BREVO_API_KEY}
+      - NUXT_TO_EMAIL=${NUXT_TO_EMAIL}
+      - NUXT_GHOST_KEY=${NUXT_GHOST_KEY}
+      - NUXT_GHOST_URL=${NUXT_GHOST_URL}
+    restart: always
