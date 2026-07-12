@@ -1,5 +1,6 @@
 export default defineEventHandler(async (event) => {
     const body = await readBody(event)
+    const config = useRuntimeConfig()
 
     const isValid = await verifyTurnstileToken(event, body.token)
 
@@ -9,8 +10,6 @@ export default defineEventHandler(async (event) => {
             statusMessage: 'Cloudflare Turnstile verification failed.'
         })
     }
-
-    const config = useRuntimeConfig()
 
     if (!body.email || !body.message) {
         throw createError({

@@ -66,9 +66,15 @@ export default defineNuxtConfig({
     siteKey: process.env.NUXT_PUBLIC_TURNSTILE_SITE_KEY || '',
     secretKey: process.env.NUXT_TURNSTILE_SECRET_KEY || ''
   },
+
   runtimeConfig: {
     brevoApiKey: process.env.NUXT_BREVO_API_KEY || '',
     toEmail: process.env.NUXT_TO_EMAIL || '',
+
+    turnstile: {
+      secretKey: process.env.NUXT_TURNSTILE_SECRET_KEY || ''
+    },
+
     public: {
       ghostKey: process.env.NUXT_GHOST_KEY || '',
       ghostUrl: process.env.NUXT_GHOST_URL || '',
