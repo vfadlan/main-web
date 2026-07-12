@@ -2,15 +2,6 @@ export default defineEventHandler(async (event) => {
     const body = await readBody(event)
     const config = useRuntimeConfig()
 
-    const isValid = await verifyTurnstileToken(event, body.token)
-
-    if (!isValid) {
-        throw createError({
-            statusCode: 400,
-            statusMessage: 'Cloudflare Turnstile verification failed.'
-        })
-    }
-
     if (!body.email || !body.message) {
         throw createError({
             statusCode: 400,
@@ -18,6 +9,15 @@ export default defineEventHandler(async (event) => {
         })
     }
 
+
+    const isValid = await verifyTurnstileToken(body.token, event)
+
+    if (!isValid) {
+        throw createError({
+            statusCode: 400,
+            statusMessage: 'Cloudflare Turnstile verification failed.'
+        })
+    }
     try {
         const response = await $fetch(
             'https://api.brevo.com/v3/smtp/email',
