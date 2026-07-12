@@ -24,18 +24,30 @@
         <!-- Text Description Box -->
         <div class="p-6 flex flex-col flex-1 text-center justify-between">
           <div class="space-y-2">
-            <h3 class="text-2xl font-light tracking-wide text-zinc-900 dark:text-white">
+            <h3 class="text-2xl font-light tracking-wide text-zinc-900 ">
               {{ book.title }}
             </h3>
-            <p class="text-sm italic font-medium text-zinc-700 dark:text-zinc-400">
+            <p class="text-sm italic font-medium text-zinc-700 ">
               by {{ book.author }}
             </p>
           </div>
 
-          <p class="text-sm leading-relaxed text-zinc-600 dark:text-zinc-400 mt-6 text-left">
+          <p class="text-sm leading-relaxed text-zinc-800 mt-6 text-left">
             {{ book.description }}
           </p>
         </div>
+
+        <UButton
+            label="Goodreads"
+            variant="outline"
+            color="neutral"
+            size="xl"
+            icon="i-lucide-book-marked"
+            class="text-primary-500 hover:bg-primary-50"
+            :ui="{ base: 'justify-center text-center w-full' }"
+            :to="book.goodreads"
+            target="_blank"
+        />
       </UCard>
     </div>
   </UContainer>
@@ -47,26 +59,30 @@ interface Book {
   author: string
   description: string
   image: string
+  goodreads: string
 }
 
 const books: Book[] = [
   {
     title: 'The Midnight Library',
     author: 'Matt Haig',
-    description: "A young woman's journey navigating existential choices within a mysterious library after a suicide attempt.",
-    image: 'https://images.unsplash.com/photo-1544947950-fa07a98d237f?q=80&w=600&auto=format&fit=crop' // Swap with actual cover image asset paths
+    description: "Perjalanan seorang wanita muda dalam menjelajahi pilihan-pilihan eksistensial di dalam sebuah perpustakaan misterius setelah sebuah percobaan bunuh diri.",
+    image: 'https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1602190253i/52578297.jpg',
+    goodreads: 'https://www.goodreads.com/book/show/52578297-the-midnight-library?ref=nav_sb_ss_1_12'
   },
   {
-    title: 'Cosmos',
+    title: 'Kosmos',
     author: 'Carl Sagan',
-    description: 'An introductory to science. It explains almost everything starting from the big bang to our culture and exploration to outer space. This is the book that made me fall in love with science and books.',
-    image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=600&auto=format&fit=crop'
+    description: 'Sebuah pengantar sains. Buku ini menjelaskan hampir semua hal mulai dari dentuman besar (big bang) hingga budaya kita dan penjelajahan ke luar angkasa.',
+    image: 'https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1251701652i/6782803.jpg',
+    goodreads: 'https://www.goodreads.com/book/show/6782803-kosmos?ref=nav_sb_ss_1_1'
   },
   {
-    title: 'Crime and Punishment',
-    author: 'Fyodor Dostoevsky',
-    description: 'A famous old Russian literature that still worth to read. Story about a murder, and its punishment for the rest of the book.',
-    image: 'https://images.unsplash.com/photo-1512820790803-83ca734da794?q=80&w=600&auto=format&fit=crop'
+    title: 'Tentang Kamu',
+    author: 'Tere Liye',
+    description: 'Sebuah biografi fiksi. Perjalanan pengacara dalam menyelidiki kisah hidup seorang Sri Ningsih. Anak pedalaman negeri yang mewarisi satu miliar poundsterling.',
+    image: 'https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1475659479i/32467509.jpg',
+    goodreads: 'https://www.goodreads.com/book/show/32467509-tentang-kamu'
   }
 ]
 </script>

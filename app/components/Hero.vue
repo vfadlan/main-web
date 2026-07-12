@@ -11,20 +11,20 @@ import TextRotator from "~/components/TextRotator.vue";
 
     <div class="relative z-10 w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
 
-      <div class="lg:col-span-7 flex flex-col justify-between p-8 md:p-12 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl text-white shadow-2xl">
+      <div class="lg:col-span-7 flex flex-col justify-start p-8 md:p-12 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl text-white shadow-2xl">
         <div class="space-y-6">
           <h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-1">
             Fadlan Abduh
           </h1>
 
-          <text-rotator class="text-2xl mb-12"/>
+          <text-rotator class="text-2xl mb-4"/>
 
           <p class="text-base md:text-lg text-zinc-200 max-w-xl leading-relaxed">
             Saya menulis kode dan kata, untuk batu silika dan manusia.
           </p>
         </div>
 
-        <div class="flex flex-wrap items-center gap-4 pt-12">
+        <div class="flex flex-wrap items-center gap-4 pt-6">
           <UButton
               label="Hubungi Saya"
               icon="i-lucide-arrow-right"

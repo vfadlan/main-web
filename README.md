@@ -1,75 +1,16 @@
-# Nuxt Minimal Starter
+# Nuxt.js Portfolio Web
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+## Running with Docker
 
-## Setup
+1. Fill `.env`
+2. Run `docker compose build`
+3. Run `docker compose up`
+4. Access on `localhost:3000`
 
-Make sure to install dependencies:
+## Changelog
+### 26/07/12:
+* Completed contact form
+* Add Cloudflare Turnstile to contact form
+* Refine FavBooks
 
-```bash
-# npm
-npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+### 26/07/11: Initial Commit

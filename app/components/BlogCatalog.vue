@@ -92,7 +92,7 @@
     </div>
 
     <a
-        href="https://blog.fadlanabduh.my.id?utm_source=www.fadlanabduh.my.id&utm_medium=cta&utm_campaign=mainweb"
+        href="https://blog.fadlanabduh.my.id?utm_source=www.fadlanabduh.my.id&utm_medium=blog_catalog&utm_campaign=mainweb"
         target="_blank"
         class="block bg-primary-500 hover:bg-primary-700 active:bg-primary-800 rounded-2xl py-4 px-8 mt-8 text-center text-white font-semibold"
     >

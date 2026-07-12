@@ -21,7 +21,7 @@
             size="md"
             variant="solid"
             class="cursor-pointer text-white bg-primary-500 hover:bg-primary-700 active:bg-primary-800"
-            @click="pickRandomQuote()"
+            @click="pickNextQuote()"
         />
       </div>
 
@@ -104,21 +104,31 @@ const quotes: Quote[] = [
   }
 ]
 
+const shuffledQuotes = ref<Quote[]>([])
+const currentIndex = ref(0)
 const selectedQuote = ref<Quote>()
 
-const pickRandomQuote = () => {
-  let randomIndex = Math.floor(Math.random() * quotes.length)
-  if (selectedQuote.value && quotes.length > 1) {
-    while (quotes[randomIndex]!.text === selectedQuote.value.text) {
-      randomIndex = Math.floor(Math.random() * quotes.length)
-    }
+const shuffleArray = (array: Quote[]) => {
+  const arr = [...array]
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]]
   }
+  return arr
+}
 
-  selectedQuote.value = quotes[randomIndex]
+const pickNextQuote = () => {
+  if (shuffledQuotes.value.length === 0) return
+
+  selectedQuote.value = shuffledQuotes.value[currentIndex.value]
+
+  currentIndex.value = (currentIndex.value + 1) % shuffledQuotes.value.length
 }
 
 onMounted(() => {
-  pickRandomQuote()
+  shuffledQuotes.value = shuffleArray(quotes)
+
+  pickNextQuote()
 })
 </script>
 

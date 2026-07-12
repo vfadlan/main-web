@@ -1,50 +1,54 @@
 <template>
-  <div class="w-full max-w-xl p-8 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl text-white shadow-2xl">
+  <div class="w-full max-w-7xl mx-auto p-8 rounded-2xl">
     <div class="mb-6 space-y-2">
-      <h3 class="text-2xl font-normal tracking-wide">Hubungi Saya</h3>
-      <p class="text-sm text-zinc-300">
-        Punya pertanyaan atau ingin berdiskusi? Kirim pesan langsung ke email saya.
+      <h2 class="text-3xl mb-4" id="kontak">Hubungi Saya</h2>
+      <p class="text-xl">
+        Punya pertanyaan atau ingin berdiskusi? Kirim pesan langsung ke email saya melalui formulir berikut.
       </p>
     </div>
 
     <!-- Nuxt UI Form wrapper -->
     <UForm
         :state="state"
-        class="space-y-4"
+        class="space-y-4 max-w-3xl mx-auto"
         @submit="onSubmit"
     >
-      <UFormField label="Nama Anda" name="name" eager-validation>
-        <UInput
-            v-model="state.name"
+      <label for="nama" class="input-group">
+        <span>Nama<span class="text-red-800">*</span></span>
+        <input
+            type="text" id="nama" name="nama"
             placeholder="Nama Lengkap"
-            size="md"
-            class="w-full"
-            :ui="{ base: 'bg-white/5 border-white/10 text-black placeholder-zinc-400 focus:border-primary-500' }"
+            class="input-field"
+            v-model="state.name"
         />
-      </UFormField>
+      </label>
 
-      <UFormField label="Email" name="email" required eager-validation>
-        <UInput
+      <label for="email" class="input-group">
+        <span>Email<span class="text-red-800">*</span></span>
+        <input
+            type="email" id="email" name="email"
+            placeholder="email@example.com"
+            class="input-field"
             v-model="state.email"
-            type="email"
-            placeholder="nama@example.com"
-            size="md"
-            class="w-full"
-            required
-            :ui="{ base: 'bg-white/5 border-white/10 text-black placeholder-zinc-400 focus:border-primary-500' }"
         />
-      </UFormField>
+      </label>
 
-      <UFormField label="Pesan" name="message" required eager-validation>
-        <UTextarea
+      <label for="pesan" class="input-group">
+        <span>Pesan<span class="text-red-800">*</span></span>
+        <textarea
+            name="pesan" id="pesan" cols="30" rows="10"
+            class="input-field"
             v-model="state.message"
             placeholder="Tulis pesan Anda di sini..."
-            size="md"
-            class="w-full"
-            required
-            :ui="{ base: 'bg-white/5 border-white/10 text-black placeholder-zinc-400 focus:border-primary-500' }"
+        ></textarea>
+      </label>
+
+      <div class="my-4 flex justify-start">
+        <NuxtTurnstile
+            ref="turnstileRef"
+            v-model="turnstileToken"
         />
-      </UFormField>
+      </div>
 
       <!-- Status Alerts inside the form footprint -->
       <Transition name="fade">
@@ -65,10 +69,9 @@
             label="Kirim Pesan"
             icon="i-lucide-send"
             trailing
-            size="md"
-            color="primary"
+            size="xl"
+            class="cursor-pointer bg-primary-500 hover:bg-primary-600 active:bg-primary-200 active:text-primary-500"
             :loading="isLoading"
-            class="cursor-pointer"
         />
       </div>
     </UForm>
@@ -86,8 +89,14 @@ const state = reactive({
 
 const isLoading = ref(false)
 const submissionStatus = ref<'success' | 'error' | null>(null)
+const turnstileToken = ref('')
+const turnstileRef = ref()
 
 async function onSubmit() {
+  if (!turnstileToken.value) {
+    submissionStatus.value = 'error'
+    return
+  }
   isLoading.value = true
   submissionStatus.value = null
 
@@ -97,7 +106,8 @@ async function onSubmit() {
       body: {
         name: state.name,
         email: state.email,
-        message: state.message
+        message: state.message,
+        token: turnstileToken.value
       }
     })
 
@@ -106,11 +116,35 @@ async function onSubmit() {
     state.name = ''
     state.email = ''
     state.message = ''
+
+    turnstileToken.value = ''
+    turnstileRef.value?.reset()
   } catch (error) {
     console.error('Contact form error:', error)
     submissionStatus.value = 'error'
+
+    turnstileToken.value = ''
+    turnstileRef.value?.reset()
   } finally {
     isLoading.value = false
   }
 }
 </script>
+
+<style scoped>
+.input-group {
+  margin: 24px auto;
+  display: block;
+}
+
+.input-field {
+  width: 100%;
+  border: 1px #babaca solid;
+  border-radius: 8px;
+  padding: 4px 8px;
+}
+
+.input-field:focus {
+  outline: 2px #7f1d1d solid;
+}
+</style>
