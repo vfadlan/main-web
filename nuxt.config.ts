@@ -78,6 +78,7 @@ export default defineNuxtConfig({
     public: {
       ghostKey: process.env.NUXT_GHOST_KEY || '',
       ghostUrl: process.env.NUXT_GHOST_URL || '',
+      
       turnstile: {
         siteKey: process.env.NUXT_PUBLIC_TURNSTILE_SITE_KEY || ''
       }

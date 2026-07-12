@@ -8,6 +8,8 @@ services:
       args:
         - NUXT_PUBLIC_TURNSTILE_SITE_KEY=${NUXT_PUBLIC_TURNSTILE_SITE_KEY}
         - NUXT_TURNSTILE_SECRET_KEY=${NUXT_TURNSTILE_SECRET_KEY}
+        - NUXT_GHOST_KEY=${NUXT_GHOST_KEY}
+        - NUXT_GHOST_URL=${NUXT_GHOST_URL}
     container_name: portfolio-nuxt
     ports:
       - "3000:3000"
