@@ -1,7 +1,47 @@
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
-  devtools: { enabled: true },
-  modules: ['@nuxt/ui', '@nuxtjs/turnstile'],
+  ssr: true,
+  devtools: { enabled: false },
+  modules: [
+    '@nuxt/ui', 
+    '@nuxtjs/turnstile',
+    '@nuxtjs/sitemap',
+    '@nuxtjs/robots'
+  ],
+
+  app: {
+    head: {
+      htmlAttrs: {
+        lang: 'id'
+      },
+      meta: [
+        { charset: 'utf-8' },
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+        { name: 'format-detection', content: 'telephone=no' },
+        { name: 'robots', content: 'index, follow' }
+      ],
+      link: [
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      ]
+    }
+  },
+
+  nitro: {
+    prerender: {
+      crawlLinks: true,
+      routes: ['/']
+    }
+  },
+
+  site: {
+    url: 'https://www.fadlanabduh.my.id',
+    name: 'Fadlan Abduh Erman Nawa'
+  },
+
+  sitemap: {
+    exclude: ['/api/**']
+  },
+
   css: ['~/assets/css/main.css'],
   colorMode: {
     preference: 'light',
@@ -21,6 +61,7 @@ export default defineNuxtConfig({
       ]
     }
   },
+
   turnstile: {
     secretKey: process.env.NUXT_TURNSTILE_SECRET_KEY || ''
   },

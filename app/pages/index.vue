@@ -46,4 +46,18 @@ useHead({
     }
   ]
 })
+
+useSeoMeta({
+  title: 'Fadlan Abduh | Firmware Engineering',
+  description: 'Saya menulis kode dan kata, untuk batu silika dan manusia.',
+
+  ogTitle: 'Fadlan Abduh | Firmware Engineering',
+  ogDescription: 'Saya menulis kode dan kata, untuk batu silika dan manusia.',
+  ogType: 'website',
+  ogUrl: 'https://fadlanabduh.my.id',
+  
+  twitterCard: 'summary_large_image',
+  twitterTitle: 'Fadlan Abduh | Firmware Engineering',
+  twitterDescription: 'Saya menulis kode dan kata, untuk batu silika dan manusia.'
+})
 </script>
