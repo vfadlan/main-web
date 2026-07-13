@@ -11,7 +11,7 @@ const items = computed<NavigationMenuItem[]>(() => [
   },
   {
     label: 'Kontak',
-    to: '#kontak'
+    to: '/#kontak'
   }
 ])
 </script>
