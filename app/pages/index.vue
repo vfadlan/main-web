@@ -24,7 +24,7 @@ import Education from '~/components/Education.vue'
 import Contact from '~/components/Contact.vue'
 
 useHead({
-  title: 'Fadlan Abduh | Firmware Engineering',
+  title: 'Fadlan Abduh | Embedded Systems & Firmware',
   meta: [
     {
       name: 'description',
@@ -32,7 +32,7 @@ useHead({
     },
     {
       property: 'og:title',
-      content: 'Fadlan Abduh | Firmware Engineering'
+      content: 'Fadlan Abduh | Embedded Systems & Firmware'
     },
     {
       property: 'og:description',
@@ -49,16 +49,23 @@ useHead({
 })
 
 useSeoMeta({
-  title: 'Fadlan Abduh | Firmware Engineering',
+  title: 'Fadlan Abduh | Embedded Systems & Firmware',
   description: 'Saya menulis kode dan kata, untuk batu silika dan manusia.',
 
-  ogTitle: 'Fadlan Abduh | Firmware Engineering',
+  ogTitle: 'Fadlan Abduh | Embedded Systems & Firmware',
   ogDescription: 'Saya menulis kode dan kata, untuk batu silika dan manusia.',
   ogType: 'website',
   ogUrl: 'https://fadlanabduh.my.id',
   
   twitterCard: 'summary_large_image',
-  twitterTitle: 'Fadlan Abduh | Firmware Engineering',
+  twitterTitle: 'Fadlan Abduh | Embedded Systems & Firmware',
   twitterDescription: 'Saya menulis kode dan kata, untuk batu silika dan manusia.'
 })
+
+console.log("█   █ █████ █     █      ███         █   █  ███  █████ █████ \n" +
+    "█   █ █     █     █     █   █        ██ ██ █   █   █   █     \n" +
+    "█████ ████  █     █     █   █        █ █ █ █████   █   ████  \n" +
+    "█   █ █     █     █     █   █  █     █   █ █   █   █   █     \n" +
+    "█   █ █████ █████ █████  ███  █      █   █ █   █   █   █████ ")
+console.log("HINT: Privasi adalah prioritas, aturan tertulis adalah formalitas. Namun jika kamu memeriksa apa yang menyusun aturan tersebut, kamu akan menemukan kebenaran yang tersembunyi.")
 </script>

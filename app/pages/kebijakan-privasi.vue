@@ -42,6 +42,20 @@
 </style>
 
 <template>
+  <!--
+======================================================================
+
+ Anda berhasil menemukan penyusun kebijakan-kebijakan privasi ini. Lanjutkan.
+
+ PETUNJUK:
+ "Aku adalah pengamat yang tak terlihat, merekam jejakmu di balik layar
+ dunia maya. Carilah tulisan tentang diriku di jurnal daring (Blog).
+ Namun, jangan hanya membaca apa yang tampak di permukaan teksnya."
+
+ P.S.: panggilah franz melalui panel tepi, ia akan memberikanmu bantuan.
+
+======================================================================
+-->
   <Navbar />
 
   <UMain class="bg-white">

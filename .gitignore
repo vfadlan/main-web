@@ -17,6 +17,8 @@ logs
 .DS_Store
 .fleet
 .idea
+/nitro-data
+.data/
 
 # Local env files
 .env

@@ -30,6 +30,18 @@ export default defineNuxtConfig({
     prerender: {
       crawlLinks: true,
       routes: ['/']
+    },
+    storage: {
+      db: {
+        driver: 'fs',
+        base: './.data/kv'
+      }
+    }
+  },
+
+  vue: {
+    compilerOptions: {
+      comments: true
     }
   },
 
@@ -40,6 +52,21 @@ export default defineNuxtConfig({
 
   sitemap: {
     exclude: ['/api/**']
+  },
+
+  routeRules: {
+    '/chopin': {
+      headers: {
+        'X-CTF-Fun-Fact-1': 'Chopin menulis /first-ballade pada tahun 1834. Musik ini juga dimainkan di film pemenang Oscar \'The ' +
+            'Pianist\' (2002) dan menjadi klimaks emosional yang ikonik di anime \'Your Lie in April\'.',
+
+        'X-CTF-Fun-Fact-2': 'Banyak musisi menganggap karya ini sebagai representasi sempurna dari siklus hidup manusia:' +
+            ' dimulai dengan keraguan yang sunyi, diisi badai konflik, dan diakhiri dengan tragedi yang megah.',
+
+        'X-CTF-Fun-Fact-3': 'Setiap pianis membawakannya dengan interpretasi emosi yang berbeda, dan bagian coda di ' +
+            'akhir lagu merupakan salah satu tingkat kesulitan teknis tertinggi dalam sejarah musik klasik.'
+      }
+    }
   },
 
   css: ['~/assets/css/main.css'],
