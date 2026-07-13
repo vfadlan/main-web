@@ -8,6 +8,7 @@
 4. Access on `localhost:3000`
 
 ## Changelog
+### 26/07/13: Add Privacy Policy
 ### 26/07/12:
 * Completed contact form
 * Add Cloudflare Turnstile to contact form

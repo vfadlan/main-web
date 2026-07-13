@@ -1,5 +1,5 @@
 <template>
-  <div class="text-zinc-800 dark:text-zinc-200 bg-primary-500 relative w-full">
+  <div class="text-zinc-800 bg-gradient-to-tr from-primary-500 via-primary-500 to-orange-600 relative w-full">
     <div class="py-12 px-6 max-w-4xl mx-auto">
 
       <Transition name="fade-slide" mode="out-in">

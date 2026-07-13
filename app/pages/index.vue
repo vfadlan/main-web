@@ -10,6 +10,7 @@
     <Contact />
   </UMain>
 
+  <Footer />
   <UFooter />
 </template>
 
