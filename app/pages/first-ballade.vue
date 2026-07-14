@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 
 useHead({
   title: 'The Second Piano Concerto',
@@ -38,7 +38,16 @@ console.log("https://metrics.fadlanabduh.my.id/share/IPYoBDzOCWeaZIlR")
       </header>
 
       <div class="shadow-2xl border border-neutral-800 rounded-xl overflow-hidden">
-        <YoutubeEmbed video-id="8pgyqI_nHws" title="Rachmaninov's Piano Concerto No.2 - II. Adagio sostenuto" />
+        <div class="shadow-2xl border border-neutral-800 rounded-xl overflow-hidden aspect-video w-full bg-black">
+          <iframe
+            class="w-full h-full"
+            src="https://www.youtube.com/embed/8pgyqI_nHws"
+            title="Rachmaninov's Piano Concerto No.2 - II. Adagio sostenuto"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+          ></iframe>
+        </div>
       </div>
 
       <div class="min-h-[220px] flex flex-col justify-between bg-neutral-900/40 border border-neutral-800/60 rounded-xl p-6 shadow-inner">
@@ -134,6 +143,6 @@ button {
 
 @keyframes fadeIn {
   from { opacity: 0; transform: translateX(-4px); }
-  to { opacity: 1; transform: translateX(4); }
+  to { opacity: 1; transform: translateX(0); }
 }
 </style>
