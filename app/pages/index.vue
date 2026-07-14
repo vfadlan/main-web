@@ -67,5 +67,5 @@ console.log("█   █ █████ █     █      ███         █   
     "█████ ████  █     █     █   █        █ █ █ █████   █   ████  \n" +
     "█   █ █     █     █     █   █  █     █   █ █   █   █   █     \n" +
     "█   █ █████ █████ █████  ███  █      █   █ █   █   █   █████ ")
-console.log("HINT: Privasi adalah prioritas, aturan tertulis adalah formalitas. Namun jika kamu memeriksa apa yang menyusun aturan tersebut, kamu akan menemukan kebenaran yang tersembunyi.")
+console.log("CTF HINT: Privasi adalah prioritas, aturan tertulis adalah formalitas. Namun jika kamu memeriksa apa yang menyusun aturan tersebut, kamu akan menemukan kebenaran yang tersembunyi.")
 </script>

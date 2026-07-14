@@ -1,11 +1,15 @@
 export default defineEventHandler(async (event) => {
-    const ip = getHeader(event, 'x-forwarded-for') || event.node.req.socket.remoteAddress || 'anonymous'
+    if (getMethod(event) === 'OPTIONS') {
+        setResponseStatus(event, 204)
+        return ''
+    }
 
+    const ip = getHeader(event, 'x-forwarded-for') || event.node.req.socket.remoteAddress || 'anonymous'
     const storage = useStorage('db')
     const rateLimitKey = `rate_limit:${ip.replace(/:/g, '_')}`
-
+    
     const now = Date.now()
-    const limitWindow = 60 * 1000
+    const limitWindow = 60 * 1000 
     const lastRequestTime = await storage.getItem<number>(rateLimitKey)
 
     if (lastRequestTime && now - lastRequestTime < limitWindow) {
