@@ -1,5 +1,16 @@
 export default defineEventHandler(async (event) => {
-    if (getMethod(event) === 'OPTIONS') {
+    const origin = getHeader(event, 'origin')
+    const allowedOrigin = 'https://blog.fadlanabduh.my.id'
+
+    if (origin === allowedOrigin) {
+        setResponseHeaders(event, {
+            'Access-Control-Allow-Origin': allowedOrigin,
+            'Access-Control-Allow-Methods': 'POST, OPTIONS',
+            'Access-Control-Allow-Headers': 'Content-Type, Accept',
+        })
+    }
+
+    if (event.method === 'OPTIONS') {
         setResponseStatus(event, 204)
         return ''
     }
