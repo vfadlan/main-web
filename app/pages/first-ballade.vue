@@ -10,7 +10,13 @@ useHead({
 
 const finalFlag = 'FLAG{Simsalabim-Abracadabra}'
 
-const { data } = await useFetch('/api/count-explorer')
+const { data } = await useFetch('/api/count-explorer', {
+  server: true, 
+  lazy: false,
+  getCachedData(key, nuxtApp) {
+    return nuxtApp.payload.data[key] || null
+  }
+})
 const visitorCount = computed(() => data.value?.visitorNumber || '?')
 
 const currentPage = ref(1)
