@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref, onMounted } from 'vue'
 
 useHead({
   title: 'The Second Piano Concerto',
@@ -9,15 +9,21 @@ useHead({
 })
 
 const finalFlag = 'FLAG{Simsalabim-Abracadabra}'
+const visitorCount = ref<number | string>('?')
 
-const { data } = await useFetch('/api/count-explorer', {
-  server: true, 
-  lazy: false,
-  getCachedData(key, nuxtApp) {
-    return nuxtApp.payload.data[key] || null
+onMounted(async () => {
+  try {
+    const res = await $fetch<{ success: boolean; visitorNumber: number }>('/api/count-explorer', {
+      method: 'GET'
+    })
+    if (res && res.success) {
+      visitorCount.value = res.visitorNumber
+    }
+  } catch (err) {
+    console.error('Gagal memuat hitungan explorer:', err)
+    visitorCount.value = 0
   }
 })
-const visitorCount = computed(() => data.value?.visitorNumber || '?')
 
 const currentPage = ref(1)
 const totalPages = 3

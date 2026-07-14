@@ -66,7 +66,14 @@ export default defineNuxtConfig({
         'X-CTF-Fun-Fact-3': 'Setiap pianis membawakannya dengan interpretasi emosi yang berbeda, dan bagian coda di ' +
             'akhir lagu merupakan salah satu tingkat kesulitan teknis tertinggi dalam sejarah musik klasik.'
       }
-    }
+    },
+    '/api/egg-hint': {
+      cors: true,
+      headers: {
+        'Access-Control-Allow-Origin': 'https://blog.fadlanabduh.my.id',
+        'Access-Control-Allow-Methods': 'POST, OPTIONS',
+        'Access-Control-Allow-Headers': 'Content-Type, Accept'
+      }
   },
 
   css: ['~/assets/css/main.css'],

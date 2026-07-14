@@ -11,9 +11,8 @@ export default defineEventHandler(async (event) => {
 
         setCookie(event, 'ctf_cleared', 'true', {
             maxAge: 60 * 60 * 24 * 365, // 1 Tahun
-            httpOnly: true,
+            httpOnly: false,
             path: '/',
-            secure: process.env.NODE_ENV === 'production',
             sameSite: 'lax'
         })
     }
