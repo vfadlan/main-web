@@ -1,4 +1,21 @@
 export default defineEventHandler(async (event) => {
+    const ip = getHeader(event, 'x-forwarded-for') || event.node.req.socket.remoteAddress || 'anonymous'
+
+    const storage = useStorage('db')
+    const rateLimitKey = `rate_limit:${ip.replace(/:/g, '_')}`
+
+    const now = Date.now()
+    const limitWindow = 60 * 1000
+    const lastRequestTime = await storage.getItem<number>(rateLimitKey)
+
+    if (lastRequestTime && now - lastRequestTime < limitWindow) {
+        const secondsLeft = Math.ceil((limitWindow - (now - lastRequestTime)) / 1000)
+        throw createError({
+            statusCode: 429,
+            statusMessage: `Terlalu banyak permintaan. Silakan coba lagi dalam ${secondsLeft} detik.`
+        })
+    }
+
     const body = await readBody(event)
     const config = useRuntimeConfig()
 
@@ -10,6 +27,8 @@ export default defineEventHandler(async (event) => {
     }
 
     try {
+        await storage.setItem(rateLimitKey, now)
+
         const response = await $fetch(
             'https://api.brevo.com/v3/smtp/email',
             {
