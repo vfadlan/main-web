@@ -2,6 +2,17 @@ import { v4 as uuid } from "uuid";
 import { useDb } from "../../db";
 
 export default defineEventHandler(async (event) => {
+    const origin = getHeader(event, 'origin')
+    const allowedOrigin = 'https://blog.fadlanabduh.my.id'
+
+    if (origin === allowedOrigin) {
+        setResponseHeaders(event, {
+            'Access-Control-Allow-Origin': allowedOrigin,
+            'Access-Control-Allow-Methods': 'POST, OPTIONS',
+            'Access-Control-Allow-Headers': 'Content-Type, Accept',
+        })
+    }
+
     const ip = getHeader(event, 'x-forwarded-for') || event.node.req.socket.remoteAddress || 'anonymous'
 
     const storage = useStorage('db')

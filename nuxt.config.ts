@@ -75,6 +75,13 @@ export default defineNuxtConfig({
         'Access-Control-Allow-Headers': 'Content-Type, Accept'
       }
     },
+    '/api/pixels/experiment': {
+      cors: true,
+      headers: {
+        'Access-Control-Allow-Origin': 'https://blog.fadlanabduh.my.id',
+        'Access-Control-Allow-Methods': 'POST, OPTIONS',
+        'Access-Control-Allow-Headers': 'Content-Type, Accept'
+      }
   },
 
   css: ['~/assets/css/main.css'],
