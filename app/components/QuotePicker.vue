@@ -18,9 +18,10 @@
         <UButton
             id="shuffle-quote"
             icon="i-lucide-shuffle"
-            size="md"
+            size="xl"
             variant="solid"
             class="cursor-pointer text-white bg-primary-500 hover:bg-primary-700 active:bg-primary-800"
+            data-umami-event="shuffle_quote_clicked"
             @click="pickNextQuote()"
         />
       </div>

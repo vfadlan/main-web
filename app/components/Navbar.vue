@@ -3,6 +3,8 @@ import type { NavigationMenuItem } from '@nuxt/ui'
 
 const route = useRoute()
 
+const isMenuOpen = ref(false)
+
 const items = computed<NavigationMenuItem[]>(() => [
   {
     label: 'Blog',
@@ -11,13 +13,23 @@ const items = computed<NavigationMenuItem[]>(() => [
   },
   {
     label: 'Kontak',
-    to: route.path !== '/' ? '/#kontak' : '#kontak'
+    to: route.path !== '/' ? '/#kontak' : '#kontak',
+
+    onSelect: () => {
+      isMenuOpen.value = false
+    }
   }
 ])
+
+watch(isMenuOpen, (newVal) => {
+  if (newVal && typeof window !== 'undefined' && (window as any).umami) {
+    (window as any).umami.track('mobile_menu_opened')
+  }
+})
 </script>
 
 <template>
-  <UHeader class="bg-primary-500/80 border-0">
+  <UHeader v-model:open="isMenuOpen" class="bg-primary-500/80 border-0">
     <template #title>
       <p class="text-slate-100">Fadlan Abduh</p>
     </template>

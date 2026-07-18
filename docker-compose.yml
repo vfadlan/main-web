@@ -22,4 +22,5 @@ services:
       - NUXT_TURNSTILE_SECRET_KEY=${NUXT_TURNSTILE_SECRET_KEY}
     volumes:
       - ./nitro-data:/.data
+      - ./data:/app/data
     restart: always
