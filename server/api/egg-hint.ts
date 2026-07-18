@@ -1,11 +1,26 @@
 export default defineEventHandler(async (event) => {
-    const ip = getHeader(event, 'x-forwarded-for') || event.node.req.socket.remoteAddress || 'anonymous'
+    const origin = getHeader(event, 'origin')
+    const allowedOrigin = 'https://blog.fadlanabduh.my.id'
 
+    if (origin === allowedOrigin) {
+        setResponseHeaders(event, {
+            'Access-Control-Allow-Origin': allowedOrigin,
+            'Access-Control-Allow-Methods': 'POST, OPTIONS',
+            'Access-Control-Allow-Headers': 'Content-Type, Accept',
+        })
+    }
+
+    if (event.method === 'OPTIONS') {
+        setResponseStatus(event, 204)
+        return ''
+    }
+
+    const ip = getHeader(event, 'x-forwarded-for') || event.node.req.socket.remoteAddress || 'anonymous'
     const storage = useStorage('db')
     const rateLimitKey = `rate_limit:${ip.replace(/:/g, '_')}`
-
+    
     const now = Date.now()
-    const limitWindow = 60 * 1000
+    const limitWindow = 60 * 1000 
     const lastRequestTime = await storage.getItem<number>(rateLimitKey)
 
     if (lastRequestTime && now - lastRequestTime < limitWindow) {
