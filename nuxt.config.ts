@@ -36,6 +36,10 @@ export default defineNuxtConfig({
         driver: 'fs',
         base: './.data/kv'
       }
+    },
+    externals: {
+      inline: [],
+      external: ['sqlite3']
     }
   },
 
@@ -82,6 +86,7 @@ export default defineNuxtConfig({
         'Access-Control-Allow-Methods': 'POST, OPTIONS',
         'Access-Control-Allow-Headers': 'Content-Type, Accept'
       }
+    }
   },
 
   css: ['~/assets/css/main.css'],
