@@ -40,6 +40,14 @@ export default defineNuxtConfig({
     externals: {
       inline: [],
       external: ['sqlite3']
+    },
+    experimental: {
+      nodeFetchCompat: true
+    },
+    esbuild: {
+      options: {
+        target: 'node20'
+      }
     }
   },
 
