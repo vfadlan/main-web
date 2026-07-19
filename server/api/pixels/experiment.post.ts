@@ -13,6 +13,11 @@ export default defineEventHandler(async (event) => {
         })
     }
 
+    if (getMethod(event) === 'OPTIONS') {
+        setResponseStatus(event, 204)
+        return ''
+    }
+
     const ip = getHeader(event, 'x-forwarded-for') || event.node.req.socket.remoteAddress || 'anonymous'
 
     const storage = useStorage('db')
