@@ -7,6 +7,7 @@ RUN npm install -g pnpm
 WORKDIR /app
 
 COPY package.json pnpm-lock.yaml* ./
+RUN apk add --no-cache python3 make g++
 RUN pnpm install --frozen-lockfile
 COPY . .
 
@@ -31,7 +32,11 @@ ENV NODE_ENV=production
 ENV HOST=0.0.0.0
 ENV PORT=3000
 
+COPY package*.json ./
 COPY --from=builder /app/.output ./.output
+RUN apk add --no-cache python3 make g++ \
+    && npm install --omit=dev sqlite3 \
+    && apk del python3 make g++
 
 EXPOSE 3000
 
