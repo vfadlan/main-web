@@ -32,9 +32,11 @@ ENV NODE_ENV=production
 ENV HOST=0.0.0.0
 ENV PORT=3000
 
+COPY --from=builder /app/.output ./.output
 COPY package*.json ./
 COPY --from=builder /app/.output ./.output
 RUN apk add --no-cache python3 make g++ \
+    && cd /app/.output/server \
     && npm install --omit=dev sqlite3 \
     && apk del python3 make g++
 
